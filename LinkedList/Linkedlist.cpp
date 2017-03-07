@@ -25,6 +25,7 @@ typedef int Status;
 
 
 //函数接口
+Status InitList(LinkList &L); //初始化一个链表
 void CreateList_Head(LinkList &L ,int n);//利用头插法创建一个链表
 void CreateList_Tail(LinkList &L ,int n);//利用尾插法创建一个链表
 Status GetElem(LinkList L ,int i,ElemType *e); // 获取第i个元素
@@ -37,6 +38,8 @@ Status ListLength(LinkList L); //返回链表的长度（数据元素的个数�
 Status PriorElem(LinkList L,ElemType cur_e,ElemType *pre_e) ; ////若cur_e是L中的元素，且不是第一个，则返回其前驱元素  
 Status NextElem(LinkList L,ElemType cur_e,ElemType *next_e); //若cur_e是L中的元素，且不是最后一个，返回其对应后继元素  
 void ListTraverse(LinkList L); //遍历链表
+void MergeList(LinkList &La,LinkList &Lb,LinkList &Lc); // 归并两个链表
+
 
 /*测试代码*/
 int main(void)
@@ -45,6 +48,8 @@ int main(void)
 	LinkList L1 = NULL ;
 	LinkList L2 = NULL;
 	int n;
+	LinkList La,Lb;
+	LinkList Lc ;
 	ElemType e;
 	printf("利用头插法创建一个新链表：\n");
 	printf("请输入你要插入结点的个数：");
@@ -97,6 +102,19 @@ int main(void)
 
 
 //函数实现
+Status InitList(LinkList &L)
+{
+	L = (LinkList)malloc(sizeof(Node));
+	if (L==NULL)
+	{
+		exit(OVERFLOW);
+		
+	}
+	L->next = NULL;
+	return OK;
+
+}
+
 void CreateList_Head(LinkList &L ,int n)
 {
 	LinkList p ;
@@ -296,6 +314,30 @@ void ListTraverse(LinkList L) //遍历链表
 	}
 	printf("\n********************链表内容**********************\n");
 
+}
+void MergeList(LinkList &La,LinkList &Lb,LinkList &Lc)
+{
+	LinkList pa,pb,pc;
+	Lc = pc =La; //将La的头结点赋给Lc
+	pa = La->next;
+	pb = Lb->next;
+	while (pa && pb)
+	{
+		if(pa->data <= pb->data)
+		{
+			pc->next = pa;
+			pc = pa;
+			pa= pa->next;
+		}
+		else
+		{
+			pc->next = pb;
+			pc = pb;
+			pb = pb->next;
+		}
+	}
+	pc->next = pa ? pa:pb; //插入剩余段
+	free(Lb); //释放Lb的头结点
 }
 
 
