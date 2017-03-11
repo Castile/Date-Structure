@@ -33,7 +33,6 @@ struct MazePathStack {
 	SElement* top;
 	int stacksize;
 };
-
 typedef int Status; //用于返回函数的状态
 
 typedef int MazeType; //迷宫数据类型
