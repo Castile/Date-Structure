@@ -283,7 +283,6 @@ Status MazePath(MazeType[MazeScale][MazeScale], Position start, Position end)
 	printf("\n");
 	return FALSE;
 
-
 }
 
 
