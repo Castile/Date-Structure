@@ -142,6 +142,54 @@ void main()
 		}
 	}
 	
+	/*
+		也可以用一个switch语句来进行判断
+		while(str[i] != '\0')  
+		{  
+		switch(str[i])  
+		{  
+		case '(':  
+		Push(&S,str[i]);  
+		break;  
+		case '[':  
+		Push(&S,str[i]);  
+		break;  
+		case '{':  
+		Push(&S,str[i]);  
+		break;  
+		case ')':  
+		{  
+		Pop(&S,&e);  
+		if(e != '(')   
+		flag=1;  
+		}  
+		break;  
+		case ']':  
+		{  
+		Pop(&S,&e);  
+		if(e!='[')  
+		flag=1;  
+		}  
+		break;  
+		case '}':  
+		{  
+		Pop(&S,&e);  
+		if(e!='{')  
+		flag=1;  
+		}  
+		break;  
+		default:  
+		break;  
+		}  
+		if(flag)  
+		break;  
+		i++;  
+    }  
+	
+	
+	*/
+
+	
 	if(flag)
 	{
 		puts("括号匹配正确！\n");
