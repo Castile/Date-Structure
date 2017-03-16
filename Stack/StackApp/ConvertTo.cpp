@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define N 50
+#define N 50 
 /*
 	栈的运用--->进制转换  10—>2   10--->8   10---->16
 	2017年3月16日 21:47:16
